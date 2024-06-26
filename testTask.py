@@ -1,7 +1,7 @@
 import json
 import os
 
-#проверка git commit и git push
+
 def file_creation():
     letters = ['a', 'b', 'c']
     list_of_strings = []
