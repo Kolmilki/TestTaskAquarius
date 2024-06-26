@@ -1,5 +1,6 @@
 import json
 import os
+import file_creation as fc
 
 
 def file_creation():
@@ -66,7 +67,7 @@ def file_works(def_path, k, x):
 
 answer = input("Создать файлы и директории? (Y/N)")
 if answer == 'Y':
-    file_creation()
+    fc.file_creation()
 configuration_file = input("Введите название конфигурационного файла: ")
 # configuration_file = "config.txt"
 configuration_setting = int(input("Введите номер конфигурации: "))
