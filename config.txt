@@ -1,0 +1,19 @@
+#1
+#mode: dir
+#path: D:\PythonProjects\testTask\fileDirectoryFGH
+
+#2
+#mode: files
+#path: D:\PythonProjects\testTask\c.txt, D:\PythonProjects\testTask\b.txt, D:\PythonProjects\testTask\a.txt
+
+#3
+#mode: dir
+#path: D:\PythonProjects\testTask\fileDirectoryDE
+
+#4
+#mode: files
+#path: D:\PythonProjects\testTask\fileDirectoryFGH\h.txt, D:\PythonProjects\testTask\fileDirectoryFGH\f.txt
+
+#5
+#mode: files
+#path: D:\PythonProjects\testTask\a.txt, D:\PythonProjects\testTask\fileDirectoryFGH\g.txt
