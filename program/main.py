@@ -19,8 +19,9 @@ def get_indexes():
 
 
 def get_answer():
+    positive_answer = ['yes', 'Yes', 'y', 'Y']
     users_answer = input("Создать файлы и директории? (Y/N)")
-    if users_answer == 'Y':
+    if users_answer in positive_answer:
         return True
     else:
         print('Продолжение без создания файлов')
