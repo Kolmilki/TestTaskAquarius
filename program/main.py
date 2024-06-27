@@ -1,73 +1,10 @@
-import json
-import os
-import file_creation as fc
-
-
-def file_creation():
-    letters = ['a', 'b', 'c']
-    list_of_strings = []
-    for i in range(1, 11):
-        new_line = f"Строка {i}\n"
-        list_of_strings.append(new_line)
-    for letter in letters:
-        with open(f"{letter}.txt", "w", encoding="UTF-8") as def_file_out:
-            def_file_out.writelines(list_of_strings)
-
-    os.mkdir('fileDirectoryDE')
-    letters = ['d', 'e']
-    for letter in letters:
-        with open(f"fileDirectoryDE/{letter}.txt", "w", encoding="UTF-8") as def_file_out:
-            def_file_out.writelines(list_of_strings)
-
-    os.mkdir('fileDirectoryFGH')
-    letters = ['f', 'g', 'h']
-    for letter in letters:
-        with open(f"fileDirectoryFGH/{letter}.txt", "w", encoding="UTF-8") as def_file_out:
-            def_file_out.writelines(list_of_strings)
-
-
-def dir_works(def_path, k, x):
-    out_data = {}
-    for index, item in enumerate(def_path, start=1):
-        written_files = os.listdir(item)
-        for file_index, element in enumerate(written_files, start=1):
-            with open(os.path.join(item, element), encoding="UTF-8") as file_out:
-                lines = file_out.readlines()
-                out_data[str(file_index)] = {}
-                for line_index in range(k - 1, x):
-                    if line_index < len(lines):
-                        out_data[str(file_index)][f"{line_index + 1}"] = lines[line_index].strip()
-                    else:
-                        out_data[str(file_index)][
-                            f"{line_index + 1}"] = " "
-    with open("data.json", encoding="UTF-8") as json_file:
-        config_data = json.load(json_file)
-    config_data.update({"out": out_data})
-    with open("data.json", "w", encoding="UTF-8") as json_file:
-        json.dump(config_data, json_file, indent=2, ensure_ascii=False)
-
-
-def file_works(def_path, k, x):
-    out_data = {}
-    for file_index, element in enumerate(def_path, start=1):
-        with open(os.path.join(element), encoding="UTF-8") as file_out:
-            lines = file_out.readlines()
-            out_data[str(file_index)] = {}
-            for line_index in range(k - 1, x):
-                if line_index < len(lines):
-                    out_data[str(file_index)][f"{line_index + 1}"] = lines[line_index].strip()
-                else:
-                    out_data[str(file_index)][f"{line_index + 1}"] = " "
-    with open("data.json", encoding="UTF-8") as json_file:
-        config_data = json.load(json_file)
-    config_data.update({"out": out_data})
-    with open("data.json", "w", encoding="UTF-8") as json_file:
-        json.dump(config_data, json_file, indent=2, ensure_ascii=False)
+from file_creation import create_files
+from filling_js import forming_json_file, choosing_mode
 
 
 answer = input("Создать файлы и директории? (Y/N)")
 if answer == 'Y':
-    fc.file_creation()
+    create_files()
 configuration_file = input("Введите название конфигурационного файла: ")
 # configuration_file = "config.txt"
 configuration_setting = int(input("Введите номер конфигурации: "))
@@ -100,22 +37,8 @@ for element in path:
     string_path += element + ', '
 string_path = string_path.rstrip(", ")
 
-json_formation = {
-    "configFile": f"{configuration_file}",
-    "configurationID": f"{configuration_setting}",
-    "configurationData": {
-        "mode": f"{mode}",
-        "path": f"{string_path}"
-    },
-}
+forming_json_file(configuration_file, configuration_setting, mode, string_path)
+choosing_mode(mode, path, k, x)
 
-with open("data.json", "w", encoding="UTF-8") as file_out:
-    json.dump(json_formation, file_out, ensure_ascii=False, indent=2)
-
-if mode == "dir":
-    dir_works(path, k, x)
-else:
-    file_works(path, k, x)
-
-relative_path = "/data.json"
-print("Абсолютный путь к созданному json файлу", os.path.abspath(relative_path))
+# relative_path = "/data.json"
+# print("Абсолютный путь к созданному json файлу", os.path.abspath(relative_path))
