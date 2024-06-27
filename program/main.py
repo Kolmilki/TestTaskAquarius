@@ -2,14 +2,56 @@ from file_creation import create_files
 from filling_js import forming_json_file, choosing_mode
 
 
-answer = input("Создать файлы и директории? (Y/N)")
-if answer == 'Y':
+def get_config_file_name():
+    configuration_file_name = input("Введите название конфигурационного файла: ")
+    return configuration_file_name
+
+
+def get_configuration_setting():
+    configuration_setting_number = int(input("Введите номер конфигурации: "))
+    return configuration_setting_number
+
+
+def get_indexes():
+    index_k = int(input("Введите начальное значение строки (k): "))
+    index_x = int(input("Введите конечное значение строки (x): "))
+    return index_k, index_x
+
+
+def get_answer():
+    users_answer = input("Создать файлы и директории? (Y/N)")
+    if users_answer == 'Y':
+        return True
+    else:
+        print('Продолжение без создания файлов')
+        return False
+
+
+def clearing_extra(config, mode, path):
+    config_number = config.replace('#', '').rstrip('\n')
+    mode = mode.replace('#mode: ', '').rstrip('\n')
+    path[0] = path[0].replace('#path: ', '')
+    path[-1] = path[-1].rstrip('\n')
+    for i in range(len(path)):
+        path[i] = path[i].replace(' ', '')
+        path[i] = path[i].replace("\\", "/")
+    string_path = ""
+    for element in path:
+        string_path += element + ', '
+    string_path = string_path.rstrip(", ")
+    return config_number, mode, path, string_path
+
+
+answer = get_answer()
+if answer:
     create_files()
-configuration_file = input("Введите название конфигурационного файла: ")
-# configuration_file = "config.txt"
-configuration_setting = int(input("Введите номер конфигурации: "))
-k = int(input("Введите начальное значение строки (k): "))
-x = int(input("Введите конечное значение строки (x): "))
+
+configuration_file = get_config_file_name()
+configuration_setting = get_configuration_setting()
+
+k_and_x = get_indexes()
+k = k_and_x[0]
+x = k_and_x[1]
 if k > x:
     k1 = k
     k = x
@@ -24,21 +66,9 @@ mode_for_json = content[line_in_text + 1]
 path_for_json = content[line_in_text + 2].split(',')
 file_in.close()
 
-config_number = config_number_for_json.replace('#', '').rstrip('\n')
-mode = mode_for_json.replace('#mode: ', '').rstrip('\n')
-path_for_json[0] = path_for_json[0].replace('#path: ', '')
-path_for_json[-1] = path_for_json[-1].rstrip('\n')
-for i in range(len(path_for_json)):
-    path_for_json[i] = path_for_json[i].replace(' ', '')
-    path_for_json[i] = path_for_json[i].replace("\\", "/")
-path = path_for_json
-string_path = ""
-for element in path:
-    string_path += element + ', '
-string_path = string_path.rstrip(", ")
-
-forming_json_file(configuration_file, configuration_setting, mode, string_path)
-choosing_mode(mode, path, k, x)
+attributes_for_json = clearing_extra(config_number_for_json, mode_for_json, path_for_json)
+forming_json_file(configuration_file, attributes_for_json[0], attributes_for_json[1], attributes_for_json[3])
+choosing_mode(attributes_for_json[1], attributes_for_json[2], k, x)
 
 # relative_path = "/data.json"
 # print("Абсолютный путь к созданному json файлу", os.path.abspath(relative_path))
