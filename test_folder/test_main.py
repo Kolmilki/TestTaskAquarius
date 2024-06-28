@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, '/home/kolmilki/project/TestTaskAquarius/program')
+sys.path.insert(0, '/program')
 from main import getting_input
 
 

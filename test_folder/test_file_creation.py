@@ -1,6 +1,6 @@
 import os
 import sys
-sys.path.insert(0, '/home/kolmilki/project/TestTaskAquarius/program')
+sys.path.insert(0, '/program')
 from file_creation import create_files
 
 
