@@ -20,11 +20,14 @@ def get_indexes():
 
 def get_answer():
     positive_answer = ['yes', 'Yes', 'y', 'Y']
+    negative_answer = ['no', 'No', 'n', 'N']
     users_answer = input("Создать файлы и директории? (Y/N)")
     if users_answer in positive_answer:
         return True
-    else:
+    elif users_answer in negative_answer:
         print('Продолжение без создания файлов')
+        return True
+    else:
         return False
 
 
