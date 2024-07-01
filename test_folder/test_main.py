@@ -19,7 +19,6 @@ def inflation():
         os.remove(f'{path_of_creation}{path}')
     os.removedirs(f'{path_of_creation}fileDirectoryDE/')
     os.removedirs(f'{path_of_creation}fileDirectoryFGH/')
-    # os.remove(f'{path_of_creation}data.json')
 
 
 @pytest.mark.parametrize(
