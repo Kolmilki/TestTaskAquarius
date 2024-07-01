@@ -1,7 +1,7 @@
 import os
 import pytest
 from program.main import get_answer
-from program.main import get_indexes
+from program.main import check_users_input
 from program.main import get_configuration_setting
 from program.main import get_config_file_name
 from program.file_creation import create_files
@@ -51,7 +51,7 @@ def test_is_input_correct(inflation, answer, expectation):
     ]
 )
 def test_are_indexes_correct(first_index, second_index, expectation):
-    get_indexes(first_index, second_index)
+    check_users_input(first_index, second_index)
     with expectation:
         assert first_index.is_integer()
         assert second_index.is_integer()

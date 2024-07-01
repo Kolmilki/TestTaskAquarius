@@ -11,8 +11,18 @@ def get_configuration_setting(configuration_setting_number):
     return configuration_setting_number
 
 
-def get_indexes(index_k, index_x):
-    return index_k, index_x
+def get_indexes(gotten_index_k, gotten_index_x):
+    while gotten_index_k <= 0 or gotten_index_x <= 0:
+        print('Индексы должны быть положительными целыми числами')
+        indexes = check_users_input(int(input("Введите начальное значение строки (k): ")),
+                                    int(input("Введите конечное значение строки (x): ")))
+        gotten_index_k = indexes[0]
+        gotten_index_x = indexes[1]
+    return gotten_index_k, gotten_index_x
+
+
+def check_users_input(gotten_index_k, gotten_index_x):
+    return gotten_index_k, gotten_index_x
 
 
 def get_answer(users_input):
@@ -50,7 +60,7 @@ if answer:
 configuration_file = get_config_file_name(input("Введите название конфигурационного файла: "))
 configuration_setting = get_configuration_setting(int(input("Введите номер конфигурации: ")))
 
-k_and_x = get_indexes(int(input("Введите начальное значение строки (k): ")), int(input("Введите конечное значение строки (x): ")))
+k_and_x = get_indexes(0, 0)
 k = k_and_x[0]
 x = k_and_x[1]
 if k > x:
