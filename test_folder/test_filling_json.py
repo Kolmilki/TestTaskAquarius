@@ -3,10 +3,11 @@ import json
 import pytest
 from test_main import inflation
 from program.filling_json import forming_json_file
+from program.main import get_absolute_path
 from contextlib import nullcontext as does_not_raise
 
 
-pathOS = '/home/kolmilki/project/TestTaskAquarius/program/'
+pathOS = get_absolute_path()
 
 
 @pytest.mark.parametrize(

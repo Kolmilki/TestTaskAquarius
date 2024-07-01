@@ -1,5 +1,6 @@
 import os
 import pytest
+from program.main import get_absolute_path
 from program.main import get_answer
 from program.main import check_users_input
 from program.main import get_configuration_setting
@@ -14,11 +15,10 @@ def inflation():
     yield
     files = ['a.txt', 'b.txt', 'c.txt', 'fileDirectoryDE/d.txt', 'fileDirectoryDE/e.txt', 'fileDirectoryFGH/f.txt',
              'fileDirectoryFGH/g.txt', 'fileDirectoryFGH/h.txt']
-    path_of_creation = '/home/kolmilki/project/TestTaskAquarius/program/'
     for path in files:
-        os.remove(f'{path_of_creation}{path}')
-    os.removedirs(f'{path_of_creation}fileDirectoryDE/')
-    os.removedirs(f'{path_of_creation}fileDirectoryFGH/')
+        os.remove(f'{get_absolute_path()}{path}')
+    os.removedirs(f'{get_absolute_path()}fileDirectoryDE/')
+    os.removedirs(f'{get_absolute_path()}fileDirectoryFGH/')
 
 
 @pytest.mark.parametrize(
@@ -88,8 +88,7 @@ def test_is_config_number_correct(number, expectation):
     ]
 )
 def test_is_config_file_correct(inflation, answer, expectation):
-    path_of_creation = '/home/kolmilki/project/TestTaskAquarius/program/'
     configuration_file = get_config_file_name(answer)
     with expectation:
-        assert os.path.exists(f'{path_of_creation}{configuration_file}')
+        assert os.path.exists(f'{get_absolute_path()}{configuration_file}')
         assert configuration_file.endswith('.txt') or configuration_file.endswith('.csv')

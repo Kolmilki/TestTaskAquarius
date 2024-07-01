@@ -52,6 +52,9 @@ def clearing_extra(config, mode, path):
     string_path = string_path.rstrip(", ")
     return config_number, mode, path, string_path
 
+def get_absolute_path():
+    abs_path = os.path.dirname(__file__)
+    return str(abs_path) + '/'
 
 answer = get_answer(input("Создать файлы и директории? (Y/N)"))
 if answer:
@@ -68,7 +71,7 @@ if k > x:
     k = x
     x = k1
 
-file_in = open(f"/home/kolmilki/project/TestTaskAquarius/program/{configuration_file}", encoding="UTF-8")
+file_in = open(f"{get_absolute_path()}{configuration_file}", encoding="UTF-8")
 content = file_in.readlines()
 print('Конфигурация найдена' if f'#{configuration_setting}\n' in content else 'Конфигурация не найдена')
 line_in_text = content.index(f'#{configuration_setting}\n')
@@ -83,11 +86,10 @@ choosing_mode(attributes_for_json[1], attributes_for_json[2], k, x)
 
 files = ['a.txt', 'b.txt', 'c.txt', 'fileDirectoryDE/d.txt', 'fileDirectoryDE/e.txt', 'fileDirectoryFGH/f.txt',
              'fileDirectoryFGH/g.txt', 'fileDirectoryFGH/h.txt']
-path_of_creation = '/home/kolmilki/project/TestTaskAquarius/program/'
 for path in files:
-    os.remove(f'{path_of_creation}{path}')
-os.removedirs(f'{path_of_creation}fileDirectoryDE/')
-os.removedirs(f'{path_of_creation}fileDirectoryFGH/')
+    os.remove(f'{get_absolute_path()}{path}')
+os.removedirs(f'{get_absolute_path()}fileDirectoryDE/')
+os.removedirs(f'{get_absolute_path()}fileDirectoryFGH/')
 
 # relative_path = "/data.json"
 # print("Абсолютный путь к созданному json файлу", os.path.abspath(relative_path))
