@@ -22,20 +22,18 @@ def get_indexes(gotten_index_k, gotten_index_x):
     return gotten_index_k, gotten_index_x
 
 
+# вот это поменять
 def check_users_input(gotten_index_k, gotten_index_x):
     return gotten_index_k, gotten_index_x
 
 
 def get_answer(users_input):
-    positive_answer = ['yes', 'Yes', 'y', 'Y']
-    negative_answer = ['no', 'No', 'n', 'N']
+    positive_answer = ['yes', 'Yes', 'y', 'Y', 'н', 'Н']
     users_answer = users_input
     if users_answer in positive_answer:
         return True
-    elif users_answer in negative_answer:
-        print('Продолжение без создания файлов')
-        return False
     else:
+        print('Продолжение без создания файлов')
         return False
 
 
@@ -53,9 +51,32 @@ def clearing_extra(config, mode, path):
     string_path = string_path.rstrip(", ")
     return config_number, mode, path, string_path
 
+
+def read_configuration_file():
+    file_in = open(f"{get_absolute_path()}{configuration_file}", encoding="UTF-8")
+    content = file_in.readlines()
+    print('Конфигурация найдена' if f'#{configuration_setting}\n' in content else 'Конфигурация не найдена')
+    line_in_text = content.index(f'#{configuration_setting}\n')
+    config_number_for_json = content[line_in_text]
+    mode_for_json = content[line_in_text + 1]
+    path_for_json = content[line_in_text + 2].split(',')
+    file_in.close()
+    return config_number_for_json, mode_for_json, path_for_json
+
+
 def get_absolute_path():
     abs_path = os.path.dirname(__file__)
     return str(abs_path) + '/'
+
+
+def remove_directorys():
+    files = ['a.txt', 'b.txt', 'c.txt', 'fileDirectoryDE/d.txt', 'fileDirectoryDE/e.txt', 'fileDirectoryFGH/f.txt',
+                 'fileDirectoryFGH/g.txt', 'fileDirectoryFGH/h.txt']
+    for path in files:
+        os.remove(f'{get_absolute_path()}{path}')
+    os.removedirs(f'{get_absolute_path()}fileDirectoryDE/')
+    os.removedirs(f'{get_absolute_path()}fileDirectoryFGH/')
+
 
 if __name__ == '__main__':
 
@@ -74,25 +95,16 @@ if __name__ == '__main__':
         k = x
         x = k1
 
-    file_in = open(f"{get_absolute_path()}{configuration_file}", encoding="UTF-8")
-    content = file_in.readlines()
-    print('Конфигурация найдена' if f'#{configuration_setting}\n' in content else 'Конфигурация не найдена')
-    line_in_text = content.index(f'#{configuration_setting}\n')
-    config_number_for_json = content[line_in_text]
-    mode_for_json = content[line_in_text + 1]
-    path_for_json = content[line_in_text + 2].split(',')
-    file_in.close()
+    config_data = read_configuration_file()
+    config_number_for_json = config_data[0]
+    mode_for_json = config_data[1]
+    path_for_json = config_data[2]
 
     attributes_for_json = clearing_extra(config_number_for_json, mode_for_json, path_for_json)
     forming_json_file(configuration_file, attributes_for_json[0], attributes_for_json[1], attributes_for_json[3])
     choosing_mode(attributes_for_json[1], attributes_for_json[2], k, x)
 
-    files = ['a.txt', 'b.txt', 'c.txt', 'fileDirectoryDE/d.txt', 'fileDirectoryDE/e.txt', 'fileDirectoryFGH/f.txt',
-                 'fileDirectoryFGH/g.txt', 'fileDirectoryFGH/h.txt']
-    for path in files:
-        os.remove(f'{get_absolute_path()}{path}')
-    os.removedirs(f'{get_absolute_path()}fileDirectoryDE/')
-    os.removedirs(f'{get_absolute_path()}fileDirectoryFGH/')
+    remove_directorys()
 
     path = f"{get_absolute_path()}data.json"
     print("Абсолютный путь к созданному json файлу:", path)
