@@ -11,6 +11,7 @@ def get_configuration_setting(configuration_setting_number):
     return configuration_setting_number
 
 
+# !!!
 def get_indexes(gotten_index_k, gotten_index_x):
     while gotten_index_k <= 0 or gotten_index_x <= 0:
         print('Индексы должны быть положительными целыми числами')
@@ -56,40 +57,42 @@ def get_absolute_path():
     abs_path = os.path.dirname(__file__)
     return str(abs_path) + '/'
 
-answer = get_answer(input("Создать файлы и директории? (Y/N)"))
-if answer:
-    create_files()
+if __name__ == '__main__':
 
-configuration_file = get_config_file_name(input("Введите название конфигурационного файла: "))
-configuration_setting = get_configuration_setting(int(input("Введите номер конфигурации: ")))
+    answer = get_answer(input("Создать файлы и директории? (Y/N)"))
+    if answer:
+        create_files()
 
-k_and_x = get_indexes(0, 0)
-k = k_and_x[0]
-x = k_and_x[1]
-if k > x:
-    k1 = k
-    k = x
-    x = k1
+    configuration_file = get_config_file_name(input("Введите название конфигурационного файла: "))
+    configuration_setting = get_configuration_setting(int(input("Введите номер конфигурации: ")))
 
-file_in = open(f"{get_absolute_path()}{configuration_file}", encoding="UTF-8")
-content = file_in.readlines()
-print('Конфигурация найдена' if f'#{configuration_setting}\n' in content else 'Конфигурация не найдена')
-line_in_text = content.index(f'#{configuration_setting}\n')
-config_number_for_json = content[line_in_text]
-mode_for_json = content[line_in_text + 1]
-path_for_json = content[line_in_text + 2].split(',')
-file_in.close()
+    k_and_x = get_indexes(0, 0)
+    k = k_and_x[0]
+    x = k_and_x[1]
+    if k > x:
+        k1 = k
+        k = x
+        x = k1
 
-attributes_for_json = clearing_extra(config_number_for_json, mode_for_json, path_for_json)
-forming_json_file(configuration_file, attributes_for_json[0], attributes_for_json[1], attributes_for_json[3])
-choosing_mode(attributes_for_json[1], attributes_for_json[2], k, x)
+    file_in = open(f"{get_absolute_path()}{configuration_file}", encoding="UTF-8")
+    content = file_in.readlines()
+    print('Конфигурация найдена' if f'#{configuration_setting}\n' in content else 'Конфигурация не найдена')
+    line_in_text = content.index(f'#{configuration_setting}\n')
+    config_number_for_json = content[line_in_text]
+    mode_for_json = content[line_in_text + 1]
+    path_for_json = content[line_in_text + 2].split(',')
+    file_in.close()
 
-files = ['a.txt', 'b.txt', 'c.txt', 'fileDirectoryDE/d.txt', 'fileDirectoryDE/e.txt', 'fileDirectoryFGH/f.txt',
-             'fileDirectoryFGH/g.txt', 'fileDirectoryFGH/h.txt']
-for path in files:
-    os.remove(f'{get_absolute_path()}{path}')
-os.removedirs(f'{get_absolute_path()}fileDirectoryDE/')
-os.removedirs(f'{get_absolute_path()}fileDirectoryFGH/')
+    attributes_for_json = clearing_extra(config_number_for_json, mode_for_json, path_for_json)
+    forming_json_file(configuration_file, attributes_for_json[0], attributes_for_json[1], attributes_for_json[3])
+    choosing_mode(attributes_for_json[1], attributes_for_json[2], k, x)
 
-# relative_path = "/data.json"
-# print("Абсолютный путь к созданному json файлу", os.path.abspath(relative_path))
+    files = ['a.txt', 'b.txt', 'c.txt', 'fileDirectoryDE/d.txt', 'fileDirectoryDE/e.txt', 'fileDirectoryFGH/f.txt',
+                 'fileDirectoryFGH/g.txt', 'fileDirectoryFGH/h.txt']
+    for path in files:
+        os.remove(f'{get_absolute_path()}{path}')
+    os.removedirs(f'{get_absolute_path()}fileDirectoryDE/')
+    os.removedirs(f'{get_absolute_path()}fileDirectoryFGH/')
+
+    path = f"{get_absolute_path()}data.json"
+    print("Абсолютный путь к созданному json файлу:", path)
