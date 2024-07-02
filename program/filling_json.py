@@ -24,5 +24,5 @@ def forming_json_file(configuration_file, configuration_setting, mode, string_pa
 def choosing_mode(mode, path, k, x):
     if mode == "dir":
         dir_works(path, k, x)
-    else:
+    elif mode == "files":
         file_works(path, k, x)
