@@ -72,6 +72,6 @@ if __name__ == '__main__':
     config_number_for_json, mode_for_json, path_for_json = read_configuration_file(configuration_file, configuration_setting)
     forming_json_file(configuration_file, config_number_for_json, mode_for_json, path_for_json)
     choosing_mode(mode_for_json, path_for_json, k, x)
-    remove_directorys()
+    remove_directories()
     path = f"{get_absolute_path()}data.json"
     print("Абсолютный путь к созданному json файлу:", path)
