@@ -1,5 +1,4 @@
 import os
-import json
 import pytest
 from program.main import get_answer
 from program.main import get_absolute_path

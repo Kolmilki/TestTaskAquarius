@@ -8,6 +8,14 @@ def get_absolute_path():
 
 
 def dir_works(def_path, k, x):
+    """
+    Gets data.json and fills it with strings from files located in path described in config file
+
+    :param def_path: path to the directory where files are located
+    :param k: first string taken from read file
+    :param x: last string taken from read file
+    :return: finished data.json
+    """
     out_data = {}
     for index, item in enumerate(def_path, start=1):
         written_files = os.listdir(item)
@@ -29,6 +37,14 @@ def dir_works(def_path, k, x):
 
 
 def file_works(def_path, k, x):
+    """
+    Gets data.json and fills it with strings from files described in config file
+
+    :param def_path: path to the directory where files are located
+    :param k: first string taken from read file
+    :param x: last string taken from read file
+    :return: finished data.json
+    """
     out_data = {}
     for file_index, element in enumerate(def_path, start=1):
         with open(os.path.join(element), encoding="UTF-8") as file_out:

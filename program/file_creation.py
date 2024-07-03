@@ -7,6 +7,9 @@ def get_absolute_path():
 
 
 def create_files():
+    """
+    Creates files for correct code work
+    """
     letters = ['a', 'b', 'c']
     list_of_strings = []
     for i in range(1, 11):

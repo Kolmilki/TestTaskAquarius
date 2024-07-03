@@ -4,6 +4,12 @@ from filling_json import forming_json_file, choosing_mode
 
 
 def get_answer(users_input):
+    """
+    Checks if users input is in list of positive answers
+
+    :param users_input: users input
+    :return: True or False based on users answer
+    """
     positive_answer = ['yes', 'Yes', 'y', 'Y', 'н', 'Н']
     users_answer = users_input
     if users_answer in positive_answer:
@@ -14,6 +20,13 @@ def get_answer(users_input):
 
 
 def read_configuration_file(configuration_file, configuration_setting):
+    """
+    Parses information from config file
+
+    :param configuration_file: name of configuration file
+    :param configuration_setting: number of chosen configuration
+    :return: Information for filling json file
+    """
     file_in = open(f"{get_absolute_path()}{configuration_file}", encoding="UTF-8")
     content = file_in.readlines()
     print('Конфигурация найдена' if f'#{configuration_setting}\n' in content else 'Конфигурация не найдена')
@@ -26,11 +39,19 @@ def read_configuration_file(configuration_file, configuration_setting):
 
 
 def get_absolute_path():
+    """
+    Gets an absolute path of the directory where program is proceeded and adds "/" to it
+
+    :return: Part of an absolute path, wich can be added as prefix
+    """
     abs_path = os.path.dirname(__file__)
     return str(abs_path) + '/'
 
 
 def remove_directories():
+    """
+    Removes all created files and directory except data.json
+    """
     files = ['a.txt', 'b.txt', 'c.txt', 'fileDirectoryDE/d.txt', 'fileDirectoryDE/e.txt', 'fileDirectoryFGH/f.txt',
                  'fileDirectoryFGH/g.txt', 'fileDirectoryFGH/h.txt']
     for path in files:
