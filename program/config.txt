@@ -1,19 +1,19 @@
 #1
 #mode: dir
-#path: \home\kolmilki\project\TestTaskAquarius\program\fileDirectoryFGH
+#path: \home\kolmilki\TestTaskAquarius\TestTaskAquarius\program\fileDirectoryFGH
 
 #2
 #mode: files
-#path: \home\kolmilki\project\TestTaskAquarius\program\c.txt, \home\kolmilki\project\TestTaskAquarius\program\b.txt, \home\kolmilki\project\TestTaskAquarius\program\a.txt
+#path: \home\kolmilki\TestTaskAquarius\TestTaskAquarius\program\c.txt, \home\kolmilki\TestTaskAquarius\TestTaskAquarius\program\b.txt, \home\kolmilki\TestTaskAquarius\TestTaskAquarius\program\a.txt
 
 #3
 #mode: dir
-#path: \home\kolmilki\project\TestTaskAquarius\program\fileDirectoryDE
+#path: \home\kolmilki\TestTaskAquarius\TestTaskAquarius\program\fileDirectoryDE
 
 #4
 #mode: files
-#path: \home\kolmilki\project\TestTaskAquarius\program\fileDirectoryFGH\h.txt, \home\kolmilki\project\TestTaskAquarius\program\fileDirectoryFGH\f.txt
+#path: \home\kolmilki\TestTaskAquarius\TestTaskAquarius\program\fileDirectoryFGH\h.txt, \home\kolmilki\TestTaskAquarius\TestTaskAquarius\program\fileDirectoryFGH\f.txt
 
 #5
 #mode: files
-#path: \home\kolmilki\project\TestTaskAquarius\program\a.txt, \home\kolmilki\project\TestTaskAquarius\program\fileDirectoryFGH\g.txt
+#path: \home\kolmilki\TestTaskAquarius\TestTaskAquarius\program\a.txt, \home\kolmilki\TestTaskAquarius\TestTaskAquarius\program\fileDirectoryFGH\g.txt

@@ -2,7 +2,6 @@ import os
 import json
 import pytest
 from test_main import inflation
-from test_main import inflation_with_json
 from program.main import get_absolute_path
 from program.filling_json import choosing_mode
 from program.filling_json import forming_json_file
