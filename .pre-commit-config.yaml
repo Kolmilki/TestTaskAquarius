@@ -3,6 +3,6 @@ repos:
     hooks:
     - id: tests
       name: Run tests
-      entry: /home/kolmilki/TestTaskAquarius/TestTaskAquarius/script.sh
+      entry: /home/kolmilki/TestTaskAquarius/TestTaskAquarius/temp/script.sh
       language: system
       verbose: true
