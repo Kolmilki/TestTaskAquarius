@@ -1,3 +1,4 @@
 #!/bin/bash
 
-echo 'Что-то приличное'
+git diff >> log.txt
+
