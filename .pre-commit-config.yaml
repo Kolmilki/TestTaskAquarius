@@ -1,9 +1,8 @@
 repos:
 -   repo: local
-    rev: v3.2.0
     hooks:
-      - id: tests
-        name: Run tests
-        entry: "bash script.sh"
-        language: system
-        verbose: true
+    - id: tests
+      name: Run tests
+      entry: /home/kolmilki/TestTaskAquarius/TestTaskAquarius/script.sh
+      language: system
+      verbose: true
