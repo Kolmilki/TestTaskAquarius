@@ -75,4 +75,4 @@ if __name__ == '__main__':
     remove_directories()
     path = f"{get_absolute_path()}data.json"
     print("Абсолютный путь к созданному json файлу:", path)
-    print('Changes1234')
+    print('Changes')
