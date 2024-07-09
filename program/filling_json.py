@@ -40,7 +40,6 @@ def choosing_mode(mode, path, k, x):
     :param x: last string taken from read file
     :return: function for chosen configuration
     """
-    print('1')
     if mode == "dir":
         dir_works(path, k, x)
     elif mode == "files":
