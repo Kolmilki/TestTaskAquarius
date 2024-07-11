@@ -1,10 +1,10 @@
-import os
 import json
+import os
 
 
 def get_absolute_path():
     abs_path = os.path.dirname(__file__)
-    return str(abs_path) + '/'
+    return str(abs_path) + "/"
 
 
 def dir_works(def_path, k, x):
@@ -25,10 +25,11 @@ def dir_works(def_path, k, x):
                 out_data[str(file_index)] = {}
                 for line_index in range(k - 1, x):
                     if line_index < len(lines):
-                        out_data[str(file_index)][f"{line_index + 1}"] = lines[line_index].strip()
+                        out_data[str(file_index)][f"{line_index + 1}"] = lines[
+                            line_index
+                        ].strip()
                     else:
-                        out_data[str(file_index)][
-                            f"{line_index + 1}"] = " "
+                        out_data[str(file_index)][f"{line_index + 1}"] = " "
     with open(f"{get_absolute_path()}data.json", encoding="UTF-8") as json_file:
         config_data = json.load(json_file)
     config_data.update({"out": out_data})
@@ -52,7 +53,9 @@ def file_works(def_path, k, x):
             out_data[str(file_index)] = {}
             for line_index in range(k - 1, x):
                 if line_index < len(lines):
-                    out_data[str(file_index)][f"{line_index + 1}"] = lines[line_index].strip()
+                    out_data[str(file_index)][f"{line_index + 1}"] = lines[
+                        line_index
+                    ].strip()
                 else:
                     out_data[str(file_index)][f"{line_index + 1}"] = " "
     with open(f"{get_absolute_path()}data.json", encoding="UTF-8") as json_file:

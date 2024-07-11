@@ -1,11 +1,12 @@
-import os
 import json
+import os
+
 from mode_choice import dir_works, file_works
 
 
 def get_absolute_path():
     abs_path = os.path.dirname(__file__)
-    return str(abs_path) + '/'
+    return str(abs_path) + "/"
 
 
 def forming_json_file(configuration_file, configuration_setting, mode, string_path):
@@ -21,10 +22,7 @@ def forming_json_file(configuration_file, configuration_setting, mode, string_pa
     json_formation = {
         "configFile": f"{configuration_file}",
         "configurationID": f"{configuration_setting}",
-        "configurationData": {
-            "mode": f"{mode}",
-            "path": f"{string_path}"
-        },
+        "configurationData": {"mode": f"{mode}", "path": f"{string_path}"},
     }
     with open(f"{get_absolute_path()}data.json", "w", encoding="UTF-8") as file_out:
         json.dump(json_formation, file_out, ensure_ascii=False, indent=2)
