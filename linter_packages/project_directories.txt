@@ -1,0 +1,2 @@
+/home/kolmilki/TestTaskAquarius/TestTaskAquarius/program/
+/home/kolmilki/TestTaskAquarius/TestTaskAquarius/test_folder/

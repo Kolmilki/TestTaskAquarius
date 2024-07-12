@@ -57,5 +57,5 @@
 ### 3. Пакет периодической проверки
 * pydocstyle
 * isort
-* radon
 * ruff
+* radon
