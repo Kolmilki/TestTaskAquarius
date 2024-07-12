@@ -1,9 +1,9 @@
 import os
+
 import pytest
-from test_main import inflation
-from program.mode_choice import dir_works
-from program.mode_choice import file_works
 from program.main import get_absolute_path
+from program.mode_choice import dir_works, file_works
+from test_main import inflation
 
 
 @pytest.mark.parametrize(

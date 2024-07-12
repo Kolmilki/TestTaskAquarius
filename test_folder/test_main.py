@@ -1,11 +1,10 @@
 import os
-import pytest
-from program.main import get_answer
-from program.main import get_absolute_path
-from program.main import remove_directories
-from program.file_creation import create_files
-from program.main import read_configuration_file
 from contextlib import nullcontext as does_not_raise
+
+import pytest
+from program.file_creation import create_files
+from program.main import (get_absolute_path, get_answer,
+                          read_configuration_file, remove_directories)
 
 
 @pytest.fixture()

@@ -1,12 +1,11 @@
-import os
 import json
-import pytest
-from test_main import inflation
-from program.main import get_absolute_path
-from program.filling_json import choosing_mode
-from program.filling_json import forming_json_file
+import os
 from contextlib import nullcontext as does_not_raise
 
+import pytest
+from program.filling_json import choosing_mode, forming_json_file
+from program.main import get_absolute_path
+from test_main import inflation
 
 pathOS = get_absolute_path()
 

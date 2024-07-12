@@ -1,6 +1,7 @@
 import os
-from test_main import inflation
+
 from program.main import get_absolute_path
+from test_main import inflation
 
 
 def test_is_there_any_files(inflation):
